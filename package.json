@@ -1,0 +1,13 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.2"
+  },
+  "dependencies": {
+    "@langchain/openai": "^0.0.23",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "langchain": "^0.1.29"
+  }
+}
