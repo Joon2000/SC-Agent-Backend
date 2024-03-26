@@ -1,6 +1,8 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { writeFile, readFile } from 'fs/promises';
+import { exec } from 'child_process';
+
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '../.env' });
 
@@ -48,8 +50,29 @@ async function trigger() {
         console.log(result);
 
         const myString = result.content;
-        const filePath = "../contracts/myFile.sol";
+        const filePath = "../contracts/Game.sol";
         await writeFile(filePath, myString);
+
+        exec('rm -r ../ignition/deployments/chain-11155111', (error, stdout, stderr) => {
+            if (error) {
+              console.error(`exec error: ${error}`);
+            }
+            console.log(`Command output: ${stdout}`);
+          });
+        
+        exec('cd .. && npx hardhat compile', (error, stdout, stderr) => {
+            if (error) {
+              console.error(`exec error: ${error}`);
+            }
+            console.log(`Command output: ${stdout}`);
+          });
+
+        exec('cd .. && yes | npx hardhat ignition deploy ./ignition/modules/Game.ts --network sepolia', (error, stdout, stderr) => {
+            if (error) {
+              console.error(`exec error: ${error}`);
+            }
+            console.log(`Command output: ${stdout}`);
+          });
     } catch (error) {
         console.error("An error occurred:", error);
     }

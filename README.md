@@ -20,3 +20,10 @@ npx hardhat ignition deploy ./ignition/modules/Lock.ts
 cd server
 node langchain.mjs
 ```
+
+## After process Please delete new code in `contracts/Game.sol
+
+        ```require(
+            defender.characterType != DataBase.CharacterType.Elderly,
+            "Cannot attack the Elderly!"
+        );```

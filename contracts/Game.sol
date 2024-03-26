@@ -30,7 +30,6 @@ contract Game {
         DataBase.CharacterType characterType;
     }
 
-    //AI 변경 부분
     modifier attackConstraint(uint _defenderIndex) {
         Character memory defender = getCharacter(_defenderIndex);
         require(
@@ -60,7 +59,6 @@ contract Game {
         if (defender.health >= attacker.attackPower) {
             defender.health -= attacker.attackPower;
         } else {
-            // 그렇지 않으면 방어자의 체력을 0으로 설정
             defender.health = 0;
         }
 
