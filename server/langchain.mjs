@@ -2,14 +2,14 @@ import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { writeFile, readFile } from 'fs/promises';
 import * as dotenv from 'dotenv';
-dotenv.config({ path: '/Users/joonwon/code/test/.env' });
+dotenv.config({ path: '../.env' });
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 // 파일을 읽고 내용을 반환하는 함수
 async function readMyFile() {
     try {
-        const data = await readFile('SC-agent.sol', 'utf8');
+        const data = await readFile('../contracts/Game.sol', 'utf8');
         return data; // 데이터 반환
     } catch (error) {
         console.error('파일을 읽는 도중 에러가 발생했습니다:', error);
@@ -34,7 +34,7 @@ async function trigger() {
             Add a 'require' statement in the modifier section to {requirement}.
             The new statement should be a new line.
             Please add the line of code for 'require'. 
-            Give me the full code.
+            Please Give me the full entire code.
 
             I need a straightforward Solidity code snippet that satisfies the requirements. 
             Please provide only the raw code, 
@@ -48,7 +48,7 @@ async function trigger() {
         console.log(result);
 
         const myString = result.content;
-        const filePath = "./myFile.sol";
+        const filePath = "../contracts/myFile.sol";
         await writeFile(filePath, myString);
     } catch (error) {
         console.error("An error occurred:", error);

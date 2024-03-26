@@ -37,6 +37,10 @@ contract Game {
             defender.characterType != DataBase.CharacterType.Baby,
             "Cannot attack a Baby!"
         );
+        require(
+            defender.characterType != DataBase.CharacterType.Elderly,
+            "Cannot attack the Elderly!"
+        );
         _;
     }
 
