@@ -11,3 +11,12 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/Lock.ts
 ```
+
+# LLM make new solidity file that satifies requirements
+
+## to execute
+
+```shell
+cd server
+node langchain.mjs
+```
