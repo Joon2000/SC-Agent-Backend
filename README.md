@@ -14,6 +14,16 @@ npx hardhat ignition deploy ./ignition/modules/Lock.ts
 
 # LLM make new solidity file that satifies requirements
 
+## before
+
+`npm install`
+
+create .env
+
+PRIVATE_KEY =
+SEPOLIA_RPC_URL =
+OPENAI_API_KEY =
+
 ## to execute
 
 ```shell
